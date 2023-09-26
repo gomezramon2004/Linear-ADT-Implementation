@@ -22,7 +22,9 @@ class LinkedList {
         LinkedList();
         int getSize();
         Node<T>* getHead();
-        void insertAtFront(T data);
-        void insertAtEnd(T data);
+        void create(T data);
+        T read(T data);
+        bool update(T update, T data);
+        bool del(T data);
         ~LinkedList();
 };

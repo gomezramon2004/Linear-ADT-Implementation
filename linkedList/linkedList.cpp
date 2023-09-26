@@ -37,15 +37,7 @@ Node<T>* LinkedList<T>::getHead() {
 }
 
 template <class T>
-void LinkedList<T>::insertAtFront(T data) {
-    Node<T>* newNode = new Node<T>(data);
-    newNode->setNext(head);
-    head = newNode;
-    size++;
-}
-
-template <class T>
-void LinkedList<T>::insertAtEnd(T data) {
+void LinkedList<T>::create(T data) {
     Node<T>* newNode = new Node<T>(data);
     if (head == nullptr) {
         head = newNode;
@@ -57,6 +49,61 @@ void LinkedList<T>::insertAtEnd(T data) {
         curr->setNext(newNode);
     }
     size++;
+}
+
+template <class T>
+T LinkedList<T>::read(T data) {
+    Node<T>* curr = head;
+    while (curr != nullptr) {
+        if (curr->getData() == data) {
+            return curr->getData();
+        }
+        curr = curr->getNext();
+    }
+}
+
+template <class T>
+bool LinkedList<T>::update(T update, T data){
+    Node<T>* curr = head;
+    while (curr != nullptr) {
+        if (curr->getData() == oldData) {
+            curr->setData(newData);
+            return true;
+        }
+        curr = curr->getNext();
+    }
+    return false;
+}
+
+template <class T>
+bool LinkedList<T>::del(T data) {
+    if (head == nullptr) {
+        return false;
+    }
+
+    if (head->getData() == data) {
+        Node<T>* temp = head;
+        head = head->getNext();
+        delete temp;
+        --size;
+        return true;
+    }
+
+    Node<T>* prev = head;
+    Node<T>* curr = head->getNext();
+
+    while (curr != nullptr) {
+        if (curr->getData() == data) {
+            prev->setNext(curr->getNext());
+            delete curr;
+            --size;
+            return true;
+        }
+        prev = curr;
+        curr = curr->getNext();
+    }
+
+    return false;
 }
 
 template <class T>
