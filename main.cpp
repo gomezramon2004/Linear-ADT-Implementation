@@ -4,9 +4,12 @@
 
 int main() {
     LinkedList<std::string> list;
-    list.insertAtEnd("Hello");
-    list.insertAtEnd("World");
-    list.insertAtEnd("!");
+    list.create("Hello");
+    list.create("World");
+    list.create("!");
+
+    std::cout << list.read("World") << std::endl;
+    
     std::cout << "Size: " << list.getSize() << std::endl;
     Node<std::string>* curr = list.getHead();
     while (curr != nullptr) {
