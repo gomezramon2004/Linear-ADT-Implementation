@@ -1,4 +1,5 @@
 #pragma once
+#include <stdexcept>
 
 template <class T>
 class Node {

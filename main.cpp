@@ -3,21 +3,19 @@
 #include <string>
 
 int main() {
-    LinkedList<std::string> list;
-    list.create("Hello");
-    list.create("World");
-    list.create("!");
-
-    std::cout << list.read("World") << std::endl;
-    list.update("Earth", "World");
-    list.del("!");
-    
-    std::cout << "Size: " << list.getSize() << std::endl;
-    Node<std::string>* curr = list.getHead();
-    while (curr != nullptr) {
-        std::cout << curr->getData() << std::endl;
-        curr = curr->getNext();
-    }
-
-    return 0;
+    try {
+       LinkedList<std::string> list;
+       list.create("Hello");
+       list.del("!");
+      
+       std::cout << "Size: " << list.getSize() << std::endl;
+       Node<std::string>* curr = list.getHead();
+       while (curr) {
+           std::cout << curr->getData() << std::endl;
+           curr = curr->getNext();
+       }
+   } catch (const std::runtime_error& e) {
+       std::cerr << e.what() << std::endl;
+   }
+   return 0;
 }
