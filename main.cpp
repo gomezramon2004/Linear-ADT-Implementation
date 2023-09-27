@@ -9,6 +9,8 @@ int main() {
     list.create("!");
 
     std::cout << list.read("World") << std::endl;
+    list.update("Earth", "World");
+    list.del("!");
     
     std::cout << "Size: " << list.getSize() << std::endl;
     Node<std::string>* curr = list.getHead();
